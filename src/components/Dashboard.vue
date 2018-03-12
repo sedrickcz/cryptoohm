@@ -2,12 +2,20 @@
   <div class="dashboard">
     <h1>{{ msg }}</h1>
     <a href="/wallets">My wallets</a>
+    {{ wallets }}
   </div>
 </template>
 
 <script>
+import { connectDB } from '@/helpers/firebase'
+
+const walletsRef = connectDB('Wallets')
+
 export default {
   name: 'Dashboard',
+  firebase: {
+    wallets: walletsRef
+  },
   data () {
     return {
       msg: 'Dashboard'
